@@ -2,7 +2,7 @@
 
 Implementacja pracy domowej z podyplomowki PB JSDeveloper 2020/2021
 
-**Deployed version ->** Here
+**Deployed version ->** [Here](https://b-lukaszuk.github.io/memory1/)
 
 # Task 1
 
