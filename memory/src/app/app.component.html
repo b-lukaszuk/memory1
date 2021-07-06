@@ -1,0 +1,61 @@
+<div>
+  <table>
+    <tr>
+      <td colspan="3">
+        <h1>Game description</h1>
+        <p>
+          Below you see a set of cards with hidden symbols. <br />
+          Pressing the button: "To move: Player N" causes "computer player n" to
+          uncover two cards. <br />
+          Once a pair of cards with the same symbol is revealed, the cards are
+          removed and the player gets the points <br />
+          The game ends when all the cards are paired <br />
+	  <br />
+	  Open the console to see a part of a player's memory
+        </p>
+        <p></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div>
+          <div *ngFor="let row of cards; index as rId">
+            <div
+              *ngFor="let card of row; index as cId"
+              [ngClass]="card.getStatus()"
+            >
+              {{ card.toString() }}
+            </div>
+          </div>
+        </div>
+      </td>
+      <td>&nbsp;&nbsp;&nbsp;</td>
+      <td>
+        <h1>Num of players [2-4]: {{ players.length }}</h1>
+        <div *ngFor="let player of players">
+          <div>
+            <h1
+              [style.color]="player.getColor()"
+              [style.background]="
+                player.getId() === playerToMove.getId() ? 'lightgray' : 'white'
+              "
+            >
+              {{ player.getName() }} : {{ player.getPoints() }} pts
+            </h1>
+          </div>
+        </div>
+      </td>
+      <td>&nbsp;&nbsp;&nbsp;</td>
+      <td>
+        <h1>Game status:</h1>
+        <h1 *ngIf="!gameOver">IN PROGRESS</h1>
+        <h1 *ngIf="gameOver">GAME OVER</h1>
+        <h1>ROUND: {{ round }}</h1>
+        <button type="button" (click)="makeMove()" [disabled]="gameOver">
+          To move: {{ playerToMove.getName() }}
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
+<router-outlet></router-outlet>
